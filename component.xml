@@ -1,0 +1,505 @@
+<DesignerComponent>
+	<Header>
+		<Name>Yuriy's Ukraine Map Component</Name>
+		<IName>yuriyUkrMapComp</IName>
+		<Description>Yuriy's Ukraine Map Component</Description>
+		<Category>YURIY</Category>
+		<CatDescription>YuriyComponents</CatDescription>
+		<Type>PalleteEntry</Type>
+		<Version>1.0</Version>
+	</Header>
+	<Contents>
+		
+		<Model>
+			<Property>executeAtStart</Property>
+			<Property>htmlObject</Property>
+			<Property>preExecution</Property>
+			<Property>postExecution</Property>
+			<Property>listeners</Property>
+			<Property name="parameters">xActionArrayParameter</Property>
+			
+			<Property>mapFile</Property>
+			<Property>mapBackgroundColor</Property>
+			<Property>mapBorderColor</Property>
+			<Property>mapBorderOpacity</Property>
+			<Property>mapBorderWidth</Property>
+			<Property>mapColor</Property>
+			<Property>mapColors</Property>
+			<Property>mapEnableZoom</Property>
+			<Property>mapHoverColor</Property>
+			<Property>mapHoverColors</Property>
+			<Property>mapHoverOpacity</Property>
+			<Property>mapNormalizeFunction</Property>
+			<Property>mapScaleColors</Property>
+			<Property>mapSelectedColor</Property>
+			<Property>mapSelectedRegions</Property>
+			<Property>mapMultiSelectRegion</Property>
+			<Property>mapShowLabels</Property>
+			<Property>mapShowTooltip</Property>
+			<Property>mapPins</Property>
+			<Property>mapPinMode</Property>
+			
+			<Property>mapOnLoad</Property>
+			<Property>mapOnLabelShow</Property>
+			<Property>mapOnRegionOver</Property>
+			<Property>mapOnRegionOut</Property>
+			<Property>mapOnRegionClick</Property>
+			<Property>mapOnRegionSelect</Property>
+			<Property>mapOnRegionDeselect</Property>
+			<Property>mapOnResize</Property>
+			
+			<Definition name="queryDefinition">
+				<Property type="query">dataSource</Property>
+			</Definition>
+		</Model>
+		
+		<Implementation>
+			<Code src="yuriyUkrMapComponent.js" />
+			
+			<Dependencies>
+				<Dependency src="/js/jquery.vmap.js" version="1.0">jquery.vmap.js</Dependency>
+				<Dependency src="/js/maps/jquery.vmap.ukraine.js" version="1.0">jquery.vmap.ukraine.js</Dependency>
+			</Dependencies>
+			
+			<Styles>
+				<Style src="/css/jqvmap.css">jqvmap.css</Style>
+			</Styles>
+			
+			<CustomProperties>
+				<DesignerProperty>
+					<Header>
+						<Name>mapFile</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>ukraine_ua</DefaultValue>
+						<Description>Map File</Description>
+						<Tooltip>Map file you want to load</Tooltip>
+						<InputType type='valuelist'/>
+						<OutputType>String</OutputType>
+						<Order>60</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+					<Values>
+						<Value display='Ukraine'>ukraine_ua</Value>
+						<Value display='Europe'>europe_mill_en</Value>
+					</Values>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapBackgroundColor</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>#a5bfdd</DefaultValue>
+						<Description>Background Color</Description>
+						<Tooltip>Background color of map container in any CSS compatible format</Tooltip>
+						<InputType>Color</InputType>
+						<OutputType>String</OutputType>
+						<Order>65</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapBorderColor</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>#818181</DefaultValue>
+						<Description>Border Color</Description>
+						<Tooltip>Border Color to use to outline map objects</Tooltip>
+						<InputType>Color</InputType>
+						<OutputType>String</OutputType>
+						<Order>70</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapBorderOpacity</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>0.25</DefaultValue>
+						<Description>Border Opacity</Description>
+						<Tooltip>Border Opacity to use to outline map objects (use anything from 0-1, e.g. 0.5, defaults to 0.25)</Tooltip>
+						<InputType>Float</InputType>
+						<OutputType>Number</OutputType>
+						<Order>75</Order> 
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapBorderWidth</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>1</DefaultValue>
+						<Description>Border Width</Description>
+						<Tooltip>Border Width to use to outline map objects (defaults to 1)</Tooltip>
+						<InputType>Float</InputType>
+						<OutputType>Number</OutputType>
+						<Order>80</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapColor</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>#f4f3f0</DefaultValue>
+						<Description>Map Color</Description>
+						<Tooltip>Color of map regions</Tooltip>
+						<InputType>Color</InputType>
+						<OutputType>String</OutputType>
+						<Order>85</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapColors</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>Map Regions Colors</Description>
+						<Tooltip>Colors of individual map regions. Keys of colors must be in lower case</Tooltip>
+						<Tooltip></Tooltip>
+						<Advanced>true</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>90</Order>
+						<Version>1.0</Version>
+					</Header>            
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapEnableZoom</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>"true"</DefaultValue>
+						<Description>Enable Zoom</Description>
+						<Tooltip>Whether to Enable Map Zoom ( true or false, defaults to true)</Tooltip>
+						<InputType>Boolean</InputType>
+						<OutputType>Boolean</OutputType>
+						<Order>95</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapHoverColor</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>#c9dfaf</DefaultValue>
+						<Description>Map Hover Color</Description>
+						<Tooltip>Color of the region when mouse pointer is over it</Tooltip>
+						<InputType>Color</InputType>
+						<OutputType>String</OutputType>
+						<Order>100</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapHoverColors</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>Map Hover Regions Colors</Description>
+						<Tooltip>Colors of individual map regions when mouse pointer is over it. Keys of colors must be in lower case</Tooltip>
+						<Tooltip></Tooltip>
+						<Advanced>true</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>105</Order>
+						<Version>1.0</Version>
+					</Header>            
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapHoverOpacity</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>0.7</DefaultValue>
+						<Description>Hover Opacity</Description>
+						<Tooltip>Opacity of the region when mouse pointer is over it</Tooltip>
+						<InputType>Float</InputType>
+						<OutputType>Number</OutputType>
+						<Order>110</Order> 
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapNormalizeFunction</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>linear</DefaultValue>
+						<Description>Normalize Function</Description>
+						<Tooltip>This function can be used to improve results of visualizations for data with non-linear nature. Function gets raw value as the first parameter and should return value which will be used in calculations of color, with which particular region will be painted</Tooltip>
+						<InputType type='valuelist' />
+						<OutputType>String</OutputType>
+						<Order>115</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+					<Values>
+						<Value display='Linear'>linear</Value>
+						<Value display='Polynomial'>polynomial</Value>
+					</Values>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapScaleColors</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>Scale Colors</Description>
+						<Tooltip>This option defines colors, with which regions will be painted when you set option values. Array mapScaleColors can have more then two elements. Elements should be strings representing colors in RGB hex format</Tooltip>
+						<InputType>Array</InputType>
+						<OutputType>Array</OutputType>
+						<Order>120</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapSelectedColor</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>#333333</DefaultValue>
+						<Description>Selected Color</Description>
+						<Tooltip>Color for a region when you select it</Tooltip>
+						<InputType>Color</InputType>
+						<OutputType>String</OutputType>
+						<Order>125</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapSelectedRegions</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>Selected Regions</Description>
+						<Tooltip>This is the Region that you are looking to have preselected</Tooltip>
+						<InputType>Array</InputType>
+						<OutputType>Array</OutputType>
+						<Order>130</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapMultiSelectRegion</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>"false"</DefaultValue>
+						<Description>Multi Select Region</Description>
+						<Tooltip>Whether to enable more than one region to be selected at a time</Tooltip>
+						<InputType>Boolean</InputType>
+						<OutputType>Boolean</OutputType>
+						<Order>135</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapShowLabels</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>"false"</DefaultValue>
+						<Description>Show Labels</Description>
+						<Tooltip>Whether to show Regions Code Labels (true or false, defaults to false)</Tooltip>
+						<InputType>Boolean</InputType>
+						<OutputType>Boolean</OutputType>
+						<Order>140</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapShowTooltip</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>"true"</DefaultValue>
+						<Description>Show Tooltip</Description>
+						<Tooltip>Whether to show Tooltips on Mouseover (true or false, defaults to true)</Tooltip>
+						<InputType>Boolean</InputType>
+						<OutputType>Boolean</OutputType>
+						<Order>145</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapPins</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>Pins</Description>
+						<Tooltip>This option defines pins, which will be placed on the regions. The JSON can have only one element against one country code. Elements should be strings containing the HTML or id of the pin (depends on the 'pinMode' option explained next). Object {"pk": "pk_pin_metadata", "ru": "ru_pin_metadata",...}</Tooltip>
+						<Tooltip></Tooltip>
+						<Advanced>true</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>150</Order>
+						<Version>1.0</Version>
+					</Header>            
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapPinMode</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue>"content"</DefaultValue>
+						<Description>Pin Mode</Description>
+						<Tooltip>This option defines if the "pins" JSON contains the HTML strings of the pins or the ids of HTML DOM elements which are to be placed as pins</Tooltip>
+						<InputType>String</InputType>
+						<OutputType>String</OutputType>
+						<Order>155</Order>
+						<Advanced>false</Advanced>
+						<Version>1.0</Version>
+					</Header>
+				</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapOnLoad</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>On Load Function</Description>
+						<Tooltip>function(event, map) -- Callback function which will be called when map is loading, returning the map event and map details</Tooltip>
+						<Advanced>false</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>160</Order>
+						<Version>1.0</Version>
+					</Header>
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapOnLabelShow</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>On Label Show Function</Description>
+						<Tooltip>function(event, label, code, data) -- Callback function which will be called before label is shown. Label DOM object and region code will be passed to the callback as arguments</Tooltip>
+						<Advanced>false</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>165</Order>
+						<Version>1.0</Version>
+					</Header>
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapOnRegionOver</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>On Region Over Function</Description>
+						<Tooltip>function(event, code, region) -- Callback function which will be called when the mouse cursor enters the region path. Region code will be passed to the callback as argument</Tooltip>
+						<Advanced>false</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>170</Order>
+						<Version>1.0</Version>
+					</Header>
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapOnRegionOut</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>On Region Out Function</Description>
+						<Tooltip>function(event, code, region) -- Callback function which will be called when the mouse cursor leaves the region path. Region code will be passed to the callback as argument</Tooltip>
+						<Advanced>false</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>175</Order>
+						<Version>1.0</Version>
+					</Header>
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapOnRegionClick</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>On Region Click Function</Description>
+						<Tooltip>function(event, code, region) -- Callback function which will be called when the user clicks the region path. Region code will be passed to the callback as argument. This callback may be called while the user is moving the map.</Tooltip>
+						<Advanced>false</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>180</Order>
+						<Version>1.0</Version>
+					</Header>
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapOnRegionSelect</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>On Region Select Function</Description>
+						<Tooltip>function(event, code, region) -- Callback function which will be called when the selects a region. Region code will be passed to the callback as argument</Tooltip>
+						<Advanced>false</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>185</Order>
+						<Version>1.0</Version>
+					</Header>
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapOnRegionDeselect</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>On Region Deselect Function</Description>
+						<Tooltip>function(event, code, region) -- Callback function which will be called when the deselects a region Region code will be passed to the callback as argument</Tooltip>
+						<Advanced>false</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>190</Order>
+						<Version>1.0</Version>
+					</Header>
+		      	</DesignerProperty>
+				
+				<DesignerProperty>
+					<Header>
+						<Name>mapOnResize</Name>
+						<Parent>BaseProperty</Parent>
+						<DefaultValue></DefaultValue>
+						<Description>On Resize Function</Description>
+						<Tooltip>function(event, width, height) -- Callback function which will be called when the map is resized.</Tooltip>
+						<Advanced>false</Advanced>
+						<InputType>JavaScript</InputType>
+						<OutputType>Function</OutputType>
+						<Order>195</Order>
+						<Version>1.0</Version>
+					</Header>
+		      	</DesignerProperty>
+				
+			</CustomProperties>
+
+		</Implementation>
+
+	</Contents>
+</DesignerComponent>
