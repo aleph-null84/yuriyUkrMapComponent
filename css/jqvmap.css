@@ -10,7 +10,7 @@
 	font-family: sans-serif, Verdana;
 	font-size: smaller;
 	padding: 3px;
-  pointer-events:none;
+    pointer-events:none;
 }
 .jqvmap-pin {
   pointer-events:none;
@@ -25,8 +25,8 @@
 	background: #000000;
 	padding: 3px;
 	color: white;
-	width: 10px;
-	height: 10px;
+	width: 16px;
+	height: 16px;
 	cursor: pointer;
 	line-height: 10px;
 	text-align: center;
@@ -41,7 +41,8 @@
 }
 .jqvmap-region
 {
-  cursor: pointer;
+  /* cursor: pointer; */
+  cursor: default;
 }
 .jqvmap-ajax_response
 {

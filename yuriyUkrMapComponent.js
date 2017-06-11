@@ -2,7 +2,7 @@
 *
 * Yuriy's Ukraine Map Component.
 *
-* @created Jun 08, 2017
+* @created Jun 11, 2017
 * @author Yuriy Dmytryshyn
 *
 * Copyright 2017 Yuriy Dmytryshyn.  All rights reserved.
@@ -14,7 +14,7 @@ var yuriyUkrMapComp = BaseComponent.extend({
 		if(this.vectorMap){
 			this.clear();
 	    	$("#"+this.htmlObject).empty();
-	    	$(".jvectormap-label").remove();
+	    	$(".jqvmap-label").remove();
 		}
 
 		var myself=this;
@@ -123,6 +123,8 @@ var yuriyUkrMapComp = BaseComponent.extend({
 				}
 				if(myself.mapOnRegionClick != undefined){
 					mapDefinition.onRegionClick = myself.mapOnRegionClick;
+				} else {
+				    mapDefinition.onRegionClick = function(event, code, region){event.preventDefault();}
 				}
 				if(myself.mapOnRegionSelect != undefined){
 					mapDefinition.onRegionSelect = myself.mapOnRegionSelect;
@@ -134,45 +136,10 @@ var yuriyUkrMapComp = BaseComponent.extend({
 					mapDefinition.onResize = myself.mapOnResize;
 				}
 				
-				/*
-				var mapDefinition = {
-						map: myself.mapFile,
-						series: {
-					      regions: [{
-					        values: mapData,
-					        scale: [myself.mapLowScaleColor, myself.mapHighScaleColor],
-					        normalizeFunction: myself.mapNormalizeFunction
-					      }]
-					    },
-					    regionStyle: {
-			              initial: {
-			                fill: myself.mapColor
-			              }
-			            },
-						backgroundColor: myself.mapBackgroundColor,
-						hoverOpacity : myself.mapHoverOpacity,
-						onRegionClick: function(event, code){
-							if(myself.mapClickFunction){
-								myself.mapClickFunction(event, code);
-							}
-						},
-						onRegionLabelShow: function(event, label, code){
-							if(myself.mapOnRegionShowFunction){
-								var labelString = myself.mapOnRegionShowFunction(event, label.text(), code, mapData);
-								
-								label.html(labelString);
-							};
-						}
-						
-				};
-				*/
-
 				myself.vectorMap=$("#"+myself.htmlObject).vectorMap(mapDefinition);
-				/*
-				if(myself.mapClickFunction){
-					$("#"+myself.htmlObject+" path.jvectormap-region").css("cursor","pointer");
+				if(myself.mapOnRegionClick != undefined){
+					$("#"+myself.htmlObject+" path.jqvmap-region").css("cursor","pointer");
 				}
-				*/
 			});
 		  } catch(err) {
 		    console.log("query execution error: " + err.message);

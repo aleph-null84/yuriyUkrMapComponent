@@ -57,12 +57,12 @@
 			<Code src="yuriyUkrMapComponent.js" />
 			
 			<Dependencies>
-				<Dependency src="/js/jquery.vmap.js" version="1.0">jquery.vmap.js</Dependency>
+				<Dependency src="/js/jquery.vmap.min.js" version="1.0">jquery.vmap.js</Dependency>
 				<Dependency src="/js/maps/jquery.vmap.ukraine.js" version="1.0">jquery.vmap.ukraine.js</Dependency>
 			</Dependencies>
 			
 			<Styles>
-				<Style src="/css/jqvmap.css">jqvmap.css</Style>
+				<Style src="/css/jqvmap.min.css">jqvmap.css</Style>
 			</Styles>
 			
 			<CustomProperties>
@@ -443,7 +443,7 @@
 						<Parent>BaseProperty</Parent>
 						<DefaultValue></DefaultValue>
 						<Description>On Region Click Function</Description>
-						<Tooltip>function(event, code, region) -- Callback function which will be called when the user clicks the region path. Region code will be passed to the callback as argument. This callback may be called while the user is moving the map.</Tooltip>
+						<Tooltip>function(event, code, region) -- Callback function which will be called when the user clicks the region path. Region code will be passed to the callback as argument. This callback may be called while the user is moving the map. If you need to distinguish between a "real" click and a click resulting from moving the map, you can inspect $(event.currentTarget).data('mapObject').isMoving</Tooltip>
 						<Advanced>false</Advanced>
 						<InputType>JavaScript</InputType>
 						<OutputType>Function</OutputType>
@@ -488,7 +488,7 @@
 						<Parent>BaseProperty</Parent>
 						<DefaultValue></DefaultValue>
 						<Description>On Resize Function</Description>
-						<Tooltip>function(event, width, height) -- Callback function which will be called when the map is resized.</Tooltip>
+						<Tooltip>function(event, width, height) -- Callback function which will be called when the map is resized. Return event, width and height</Tooltip>
 						<Advanced>false</Advanced>
 						<InputType>JavaScript</InputType>
 						<OutputType>Function</OutputType>
